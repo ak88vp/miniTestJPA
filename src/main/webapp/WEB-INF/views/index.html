@@ -72,12 +72,7 @@
             </div>
         </div>
     </div>
-    <!--    <form action="/findCategory">-->
-    <!--        <select name="idCategory">-->
-    <!--            <option th:each="category :${categorys}" th:value="${category.getId()}" th:text="${category.getName()}" ></option>-->
-    <!--        </select>-->
-    <!--        <button> tìm kiếm</button>-->
-    <!--    </form>-->
+    <a class="btn btn-primary" href="/score8" role="button"> students over 8 score </a>
     <div class="center-pill">
         <div class="row">
             <div class="offset-1"></div>
@@ -114,7 +109,7 @@
 
                     <a th:if="${students.hasPrevious()}" th:href="@{'/'(page=${students.number}-1,key=${key})}"> back</a>
                     <span th:text="${students.number+1}"></span>/<span th:text="${students.totalPages}"></span>
-                    <a th:if="${students.hasNext()}" th:href="@{'/'(page=${students.number}+1,,key=${key})}"> Next</a>
+                    <a th:if="${students.hasNext()}" th:href="@{'/'(page=${students.number}+1,key=${key})}"> Next</a>
                 </div>
             </div>
             <div class="offset-1"></div>

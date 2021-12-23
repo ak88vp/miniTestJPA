@@ -61,6 +61,17 @@ public class StudentController {
         student.setImg(fileName);
         studentService.save(student);
         return "redirect:/";
-
+    }
+    @GetMapping("score8")
+    public String score8(@PageableDefault(value = 3,sort = "score")Pageable pageable, Model model,String key){
+        Page<Student> students;
+        if(key==null){
+            students =studentService.findAllByScoreGreaterThanEqual(pageable,8);
+        }else {
+            students=studentService.findByNameContaining(key,pageable);
+        }
+        model.addAttribute("students",students);
+        model.addAttribute("key",key);
+        return "/score";
     }
 }

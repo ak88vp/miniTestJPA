@@ -7,4 +7,5 @@ import org.springframework.data.domain.Pageable;
 public interface StudentService extends IGeneralService<Student> {
     Page<Student> findAll(Pageable pageable);
     Page<Student> findByNameContaining(String name, Pageable pageable);
+    Page<Student> findAllByScoreGreaterThanEqual(Pageable pageable,int score);
 }

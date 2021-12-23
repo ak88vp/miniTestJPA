@@ -43,4 +43,9 @@ public class StudentServiceImpl implements StudentService {
     public Page<Student> findByNameContaining(String name, Pageable pageable) {
         return studentRepository.findByNameContaining(name,pageable);
     }
+
+    @Override
+    public Page<Student> findAllByScoreGreaterThanEqual(Pageable pageable, int score) {
+        return studentRepository.findAllByScoreGreaterThanEqual(pageable,score);
+    }
 }
