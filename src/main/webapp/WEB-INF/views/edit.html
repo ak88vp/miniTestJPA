@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap" rel="stylesheet">
+</head>
+<style>
+
+    .edit {
+        background: aqua;
+        height: 25px;
+        width: 100px;
+    }
+
+    .br {
+        background: url("https://image.shutterstock.com/image-photo/top-view-worktable-accessoriesbusiness-flat-260nw-1715735197.jpg");
+        background-size: cover;
+        font-family: 'Imperial Script', cursive;
+        font-size: 10mm;
+    }
+
+    p {
+        color: greenyellow;
+    }
+</style>
+<body class="br">
+<center>
+    <div>
+
+
+        <H1>Edit Blog</H1>
+        <a href="/"> Back home</a>
+        <img th:src="@{'/student/'+${student.getImg()}}" alt="" class="imgProduct" height="100" width="100">
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" th:value="${student.getId()}">
+            <p>Name :<input type="text" name="name" th:value="${student.getName()}"></p>
+            <p>Age :<input type="text" name="age" th:value="${student.getAge()}"></p>
+            <p>score :<input type="text" name="score" th:value="${student.getScore()}"></p>
+
+            <select name="idClasszz" style="background: pink">
+
+                <option th:text="${student.getClasszz().getName()}" th:value="${student.getClasszz().getId()}"></option>
+                <th:block th:each="cl,index : ${class}">
+                    <th:block th:if="${student.getClasszz().getId()}!=${cl.getId()}">
+                        <option  th:value="${cl.getId()}"
+                                 th:text="${cl.getName()}">
+                        </option>
+                    </th:block>
+                </th:block>
+            </select>
+            <div>
+                <label>Image</label>
+                <input type="file" name="image" />
+            </div>
+            <br>
+            <button class="edit"> Edit</button>
+        </form>
+    </div>
+</center>
+</body>
+</html>
